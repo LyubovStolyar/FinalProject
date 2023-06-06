@@ -1,0 +1,32 @@
+.headerWrapper{
+width: 100%;
+height: 6%;
+color: #bfc6ff;
+
+}
+
+.link {
+
+margin-left: 7px;
+padding: 1%;
+text-decoration: none;
+color: darkblue;
+
+}
+.link:hover{
+    color: rgb(255, 255, 255);
+}
+
+.linkContainer{
+  display:flex;
+  text-align: center;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility:visible;
+    /* background-color: #aaaaaa; */
+}

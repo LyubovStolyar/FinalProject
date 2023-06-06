@@ -1,0 +1,13 @@
+.appGeneral{
+  display: flex;
+  align-items: center;
+    width: 100%;
+    height: 15%;
+    background-color: #bfc6ff;
+    font-size: 1.3rem;
+  margin: auto;
+} 
+
+.icon{
+  color: red;
+}

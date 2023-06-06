@@ -1,0 +1,39 @@
+.addItemCont{
+    width: 70vw;
+    height: 60vh;
+    margin: 4% auto;
+    text-align: center;
+
+ }
+.addItemInput{
+    width: 30%;
+    height: 7%;
+    margin: 2%;
+    font-size: 1rem;
+border: 1px solid rgb(110, 110, 134);
+padding-left: 15px;
+border-radius: 5px;
+}
+.uploadPhotoButton{
+    width: 10%;
+    height: 7%;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 87, 52);
+    border-radius: 5px;
+background-color: #3f884c;
+}
+.addPhotoInput{
+
+}
+.photoLoadedPreview{
+    width: 85%;
+    height: 60vh;
+    object-fit:scale-down;
+    text-align: center;
+    margin: 2%;
+
+}
+.uploadPhotoButton:hover{
+    background-color: #084b14;
+}

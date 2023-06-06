@@ -1,0 +1,65 @@
+.itemBody{
+    text-align: center;
+    display: flex;
+
+}
+
+.itemCont{
+    width: 30vw;
+    height: 35vw;
+    margin: 5% 3%;
+    padding: 3%;
+    box-shadow:  0 5px 15px 0  #727272 ;
+    /* border-radius: 3%; */
+    text-align: center;
+    background-color: rgb(236, 236, 236);
+}
+.photoCont{
+    width: 95%;
+    height: 55%;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+.photoStyle {
+    width: 95%;
+    height: 95%;
+    object-fit:contain;
+    margin: 5px;
+    text-align: center;
+
+}
+.buttonCont{
+    text-align: right;
+    /* padding: 1%; */
+    margin-right: 10px;
+    margin-bottom: 3%;
+
+}
+
+.descriptionField{
+    margin: 3% auto;
+/* position:static; */
+margin-bottom: 2%;
+text-align: center;
+}
+.photoTitle{
+    font-size: 1.8rem;
+    color: #563f3f;
+    margin-top: 5px;
+}
+button{
+color: #821762;
+}
+.hidden{
+    visibility: hidden;
+    background-color: aquamarine;
+}
+.visible{
+    visibility:visible;
+    /* background-color: #ff3f3f; */
+}
+.editDeleteHeartCont{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
