@@ -51,25 +51,18 @@ module.exports = {
             },
             
     deleteFromFav: async function (req, res, next) {
-                const sql =  `DELETE FROM favorites (id, itemID) VALUES(?,?)`;
+                const sql =  `DELETE FROM favorites WHERE id=? AND itemID=?`;
                
                 try {
-                  
                     const result = await database.query(sql, [
                         req.body.id,
                         req.body.itemID,
                                 
                     ]);
         
-                    //  res.status(200).send('Succsessfuly add to favorites!')
-                    res.json({
-                        // id: result[0].insertId,
-                        // title: value.title,
-                        // description: value.description,
-                        // photo: value.photo,
-        
-                    })
+                    res.json({});
                 }
+
                 catch (err) {
                     console.log(err.message);
                     res.status(400).send('error delete from favorites');

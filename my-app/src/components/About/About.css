@@ -1,0 +1,42 @@
+.aboutPageCont{
+    display:flex;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.authorPhoto{
+    margin: 2%;
+    border: 1px solid rgb(128, 115, 142);
+    box-shadow: 0 5px 10px 0 rgb(73, 67, 75);
+}
+.paragraphAbout, .paragraphWelcome{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+    color:rgb(79, 73, 78);
+    text-align:justify;
+    text-indent: 30px;
+    margin: 10% 0% 0 5%;
+
+}
+.paragraphWelcome{
+    margin: 5%;
+    text-align: center;
+}
+.toHomepageLink{
+    
+    font-size: 1.5rem;
+    text-decoration: none;
+    color:#894180;
+}
+.homepageLinkButton{
+    padding: 2%;
+    border: 1px solid #64395c;
+    border-radius: 5px;
+   background-color: #d7d7d7;
+
+}
+
+.homepageLinkButton:hover{
+    background-color: #c7b2c1;
+    border: 1px solid #d7d7d7;
+}

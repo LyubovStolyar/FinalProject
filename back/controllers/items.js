@@ -29,11 +29,6 @@ module.exports = {
       } else {
         sql = `INSERT INTO cards (title, description, photo) VALUES(?,?,?)`;
 
-        // const result = await database.query(sql, [
-        //   value.title,
-        //   value.description,
-        //   value.photo,
-        // ]);
       }
       const result = await database.query(sql, [
         value.title,
@@ -55,7 +50,7 @@ module.exports = {
   },
 
   getItems: async function (req, res, next) {
-    console.log("get Items");
+
     const sql = `SELECT * FROM cards;`; // ORDER BY name ASC;`;
 
     try {
@@ -65,5 +60,9 @@ module.exports = {
       console.log(err);
       res.json(err);
     }
+
+    // const sql2 = "SELECT * FROM favorites WHERE id=?;"
+
+
   },
 };

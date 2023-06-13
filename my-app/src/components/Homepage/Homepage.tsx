@@ -1,11 +1,13 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-import Search from "../Search/Search";
+
 import Item from "../Item/Item";
 import { getRequest } from "../../services/apiService";
 import "./Homepage.css";
 import Title from "../Title/Title";
-import photo from "../../photo/IMG_4874.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 
 export class ItemType {
   itemID: string = "";
@@ -25,6 +27,7 @@ onEditClick : Function
 }
 
 class Homepage extends React.Component<HomepageProps, State> {
+ 
   constructor(props: HomepageProps) {
     super(props);
 
@@ -56,6 +59,22 @@ class Homepage extends React.Component<HomepageProps, State> {
           
           }
 
+          filterCards = (value: string): void => {
+            value = value.toLowerCase();
+            let tempArray: Array<ItemType> = this.state.allItems
+              .filter((e) => e.title.toLowerCase().includes(value))
+              .sort(
+                (card1, card2) =>
+                  card1.title.toLowerCase().indexOf(value) -
+                  card2.title.toLowerCase().indexOf(value)
+              );
+            this.setState(() => ({
+              allItems: tempArray,
+            }));
+          };
+
+          deleteItem(){}
+
   componentDidMount(): void {
     const res = getRequest("homepage");
 
@@ -79,20 +98,29 @@ class Homepage extends React.Component<HomepageProps, State> {
     return (
       <>
         <div className="homepageHeaderCont">
-          <img src={photo} alt="photo" className="headerHomepagePhoto" />
+         
           <Title><h1>Welcome to gallery</h1></Title>
-          <Search />
-           
-          </div>
-          <div className="itemsContHomepage">
+            <div className="searchCont">
+            <input type="text" 
+             onChange={(e) => this.filterCards(e.target.value)}
+             placeholder="Search by card name"/>
+            <button><FontAwesomeIcon icon={faSearch} />Search</button>
+            </div>
+        </div>
+
+        <div className="itemsContHomepage">
             {this.state.allItems && this.state.allItems.map((e) => (
-                <Item item={e} key={e.itemID} addToFav={this.addtoFavorites} onEditClick = {(item : ItemType) => this.props.onEditClick(item)}role={''}/>
+                <Item item={e} key={e.itemID} role={''} 
+                addToFav={this.addtoFavorites} 
+                onEditClick={(item: ItemType) => this.props.onEditClick(item)} 
+                onDeleteClicked={this.deleteItem} />
             ))}
-          </div>
+        </div>
           <Footer />
       </>
     );
   }
+
 }
 
 export default Homepage;

@@ -12,7 +12,7 @@ function Header() {
       <div className="headerWrapper">
         <div className="linkContainer">
           <i className="icon"><BiStore/></i>
-          {/* <FontAwesomeIcon icon={faCoffee} /> */}
+
           <Link to="/homepage" className="link">Home</Link>
           <NavLink to="/about" className="link">About</NavLink>
           <NavLink to="/favorites" className="link">Favorites</NavLink>

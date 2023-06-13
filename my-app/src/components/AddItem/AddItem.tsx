@@ -1,21 +1,8 @@
 // import react from 'react';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Message from "../Message/Message";
 import "./AddItem.css";
 import { ItemType } from "../Homepage/Homepage";
-
-// export interface Iitem {
-//   title: string;
-//   description: string;
-//   photo: ArrayBuffer | null;
-// }
-
-// let item: Iitem = {
-//   title: "",
-//   description: "",
-//   photo: null,
-// };
 
 interface AddItemProps {
   getItem: Function,
@@ -24,17 +11,16 @@ interface AddItemProps {
 
 function AddItem(props : AddItemProps) {
   const [photoURL, setphotoURL] = useState("");
-  const navigate = useNavigate();
   let item : ItemType = props.getItem();
   if(item.photo && !photoURL){
-    viewPhotoFromString(item.photo)
+    viewPhotoFromString(item.photo);
   }
   const fileHandler = (file: File) => {
     if (file != null) {
       let reader: FileReader = new FileReader();
       reader.onload = () => {
         if (reader.result) {
-          item.photo = reader.result as ArrayBuffer;
+          item.photo = reader.result;
           viewPhotoFromString(reader.result);
         }
       };
@@ -42,9 +28,11 @@ function AddItem(props : AddItemProps) {
     }
   };
 
+
 function viewPhotoFromString(photo : any) : void {
   if(typeof(photo) != "string"){
     photo = new TextDecoder("utf-8").decode(new Uint8Array(photo.data));
+    item.photo = photo;
   }
   
   fetch(photo)
@@ -66,7 +54,7 @@ function viewPhotoFromString(photo : any) : void {
     }).then((res) => res.json());
     // .then(json => {
     // localStorage.setItem('token', json.token);
-
+  
     props.removeItem();
     window.open("/homepage", "_self");
     //  }
@@ -92,7 +80,7 @@ function viewPhotoFromString(photo : any) : void {
           type="text"
           className="addItemInput"
           value={item.description}
-          onChange={(e: any) => {console.log(item.description); item.description = e.target.value; console.log(item.description);}}
+          onChange={(e: any) => item.description = e.target.value}
           placeholder="Description"
         />
         <div>

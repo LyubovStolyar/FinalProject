@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { ItemType } from "../Homepage/Homepage";
-import "./Item.css";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import "./Item.css";
 
 
 interface Props {
     item: ItemType;
     addToFav: Function;
     role: string;
-    onEditClick: Function
+    onEditClick: Function;
+    onDeleteClicked: Function;
   };
 
  const role = localStorage.userRole
@@ -32,6 +36,7 @@ if(!photoURL) {
   fetch(enc.decode(arr)).then(res => res.blob()).then(res => setphotoURL(URL.createObjectURL(res)));
 }
 
+
     return ( 
 
         <div className="itemBody">
@@ -39,13 +44,13 @@ if(!photoURL) {
               <h1 className="photoTitle">{ props.item.title }</h1>
                 <div className="editDeleteHeartCont">  
                     <div className={role === "admin"? "visible":"hidden"}> 
-                      <button onClick={editItem}>Edit</button>
-                      <button>Delete</button>
+                      <button onClick={editItem} className="editButton"><FontAwesomeIcon icon={faPenToSquare} /></button>
+                      <button onClick={() => props.onDeleteClicked(props.item.itemID)} className="deleteButton"><FontAwesomeIcon icon={faTrashCan} /></button>
                     </div>
-
+                    
                     <div className="buttonCont">
                       <button onClick={() => {props.addToFav(localStorage.id, props.item.itemID)}}>
-                      <i>Heart</i>
+                      <FontAwesomeIcon icon={faHeart} />
                       </button>
                     </div> 
                 </div>

@@ -7,7 +7,7 @@ function LogOut() {
 
     function handleLogout() {
 
-        navigate('/login');
+        window.open('/login', "_self");
         localStorage.clear();
 
     }

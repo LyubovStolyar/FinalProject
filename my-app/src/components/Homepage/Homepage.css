@@ -11,9 +11,8 @@
     width: 100%;
     height: 100%;
 }
-.headerHomepagePhoto{
-    width: 100%;
-    height: 15vh;
-    object-fit:cover;
-    text-align: center;
+.searchCont{
+
+    text-align: right;
+    margin-right: 5%;
 }

@@ -10,7 +10,7 @@ import UserName from "./components/UserNameStatus/UserName";
 import Favorites from "./components/Favorites/Favorites";
 import AddItem from "./components/AddItem/AddItem";
 import About from "./components/About/About";
-
+import photo from "./photo/IMG_4874.jpg";
 
 
 function App(){
@@ -25,7 +25,9 @@ let itemToEdit : ItemType = new ItemType();
         <Link to="/login" className="link">Login</Link>
         <Link to="/signup" className="link">Sign up</Link>
         <LogOut />
+        
       </div>
+      <img src={photo} alt="calm view header"  className="mainPhoto" />
 
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -33,7 +35,7 @@ let itemToEdit : ItemType = new ItemType();
         <Route path="/homepage" element={<Homepage onEditClick={(item : ItemType) => itemToEdit = item}/>} />
         <Route path="/addItem" element={<AddItem getItem = {() => itemToEdit} removeItem={() => itemToEdit = new ItemType() }/>} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<About />} />
            <Route
           path="/" element={
             <PrivateRouter>

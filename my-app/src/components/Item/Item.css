@@ -17,9 +17,10 @@
 .photoCont{
     width: 95%;
     height: 55%;
-    background-color: #ffffff;
     margin: 0 auto;
+    
 }
+
 .photoStyle {
     width: 95%;
     height: 95%;
@@ -28,6 +29,7 @@
     text-align: center;
 
 }
+
 .buttonCont{
     text-align: right;
     /* padding: 1%; */
@@ -49,6 +51,7 @@ text-align: center;
 }
 button{
 color: #821762;
+cursor: pointer;
 }
 .hidden{
     visibility: hidden;
@@ -57,9 +60,13 @@ color: #821762;
 .visible{
     visibility:visible;
     /* background-color: #ff3f3f; */
+    display:flex;
 }
 .editDeleteHeartCont{
     display: flex;
     justify-content: space-between;
     align-content: center;
+}
+.editButton{
+ margin: 5%;
 }
