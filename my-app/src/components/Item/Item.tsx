@@ -11,8 +11,8 @@ interface Props {
     item: ItemType;
     addToFav: Function;
     role: string;
-    onEditClick: Function;
-    onDeleteClicked: Function;
+    onEditClick?: Function;
+    onDeleteClicked?: Function;
   };
 
  const role = localStorage.userRole
@@ -23,8 +23,10 @@ function Item (props:Props) {
   const navigate = useNavigate();
  
  function editItem() {
-  props.onEditClick(props.item);
-  navigate("/addItem");
+  if(props.onEditClick) {
+    props.onEditClick(props.item);
+    navigate("/addItem");
+  }
   }
   // fetch(props.item.photo).then(res =>res.blob()).then(res => { 
   //  let img = document.getElementById(`photo-${props.item.itemID}`) as HTMLImageElement;
@@ -44,12 +46,12 @@ if(!photoURL) {
               <h1 className="photoTitle">{ props.item.title }</h1>
                 <div className="editDeleteHeartCont">  
                     <div className={role === "admin"? "visible":"hidden"}> 
-                      <button onClick={editItem} className="editButton"><FontAwesomeIcon icon={faPenToSquare} /></button>
-                      <button onClick={() => props.onDeleteClicked(props.item.itemID)} className="deleteButton"><FontAwesomeIcon icon={faTrashCan} /></button>
+                      {props.onEditClick && <button onClick={() => {if(props.onEditClick) editItem()}} className="editButton"><FontAwesomeIcon icon={faPenToSquare} /></button>}
+                      {props.onDeleteClicked && <button onClick={() => {if(props.onDeleteClicked) props.onDeleteClicked(props.item.itemID)}} className="deleteButton"><FontAwesomeIcon icon={faTrashCan} /></button>}
                     </div>
                     
                     <div className="buttonCont">
-                      <button onClick={() => {props.addToFav(localStorage.id, props.item.itemID)}}>
+                      <button onClick={() => {props.addToFav(props.item.itemID)}}>
                       <FontAwesomeIcon icon={faHeart} />
                       </button>
                     </div> 

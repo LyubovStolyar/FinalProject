@@ -1,6 +1,5 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-
 import Item from "../Item/Item";
 import { getRequest } from "../../services/apiService";
 import "./Homepage.css";
@@ -19,7 +18,7 @@ export class ItemType {
 interface Props {}
 
 interface State {
-  allItems: Array<ItemType>;
+  itemsToShow: Array<ItemType>;
 }
 
 interface HomepageProps{
@@ -28,19 +27,21 @@ onEditClick : Function
 
 class Homepage extends React.Component<HomepageProps, State> {
  
+  allItems : Array<ItemType> = [];
+
   constructor(props: HomepageProps) {
     super(props);
-
     this.state = {
-      allItems: [],
+      itemsToShow: [],
     };
   }
 
 
-  addtoFavorites(id: string, itemID: string) {
+
+  addtoFavorites(itemID: string) {
     
       const data = {
-         id,
+         id: localStorage.id,
          itemID,
       };
 
@@ -59,9 +60,9 @@ class Homepage extends React.Component<HomepageProps, State> {
           
           }
 
-          filterCards = (value: string): void => {
+      filterCards = (value: string): void => {
             value = value.toLowerCase();
-            let tempArray: Array<ItemType> = this.state.allItems
+            let tempArray: Array<ItemType> = this.allItems
               .filter((e) => e.title.toLowerCase().includes(value))
               .sort(
                 (card1, card2) =>
@@ -69,11 +70,11 @@ class Homepage extends React.Component<HomepageProps, State> {
                   card2.title.toLowerCase().indexOf(value)
               );
             this.setState(() => ({
-              allItems: tempArray,
+              itemsToShow: tempArray,
             }));
           };
 
-          deleteItem(){}
+      deleteItem(){}
 
   componentDidMount(): void {
     const res = getRequest("homepage");
@@ -88,8 +89,9 @@ class Homepage extends React.Component<HomepageProps, State> {
         return res.json();
       })
       .then((json) => {
+        this.allItems = json;
         this.setState(() => ({
-          allItems: json,
+          itemsToShow: json,
         }));
       });
   }
@@ -109,7 +111,7 @@ class Homepage extends React.Component<HomepageProps, State> {
         </div>
 
         <div className="itemsContHomepage">
-            {this.state.allItems && this.state.allItems.map((e) => (
+            {this.state.itemsToShow && this.state.itemsToShow.map((e) => (
                 <Item item={e} key={e.itemID} role={''} 
                 addToFav={this.addtoFavorites} 
                 onEditClick={(item: ItemType) => this.props.onEditClick(item)} 

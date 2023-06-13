@@ -65,7 +65,8 @@ class Favorites extends React.Component<{}, State> {
       <div className="itemsContHomepage">
         {this.state.allItems &&
           this.state.allItems.map((e) => (
-            <Item item={e} key={e.itemID} addToFav={this.deleteFromFav} role={""} onEditClick={(item: ItemType) => console.log(item.itemID)} onDeleteClicked={this.deleteFromFav}/>
+            <Item item={e} key={e.itemID} role={""}
+            addToFav={this.deleteFromFav} />
           ))}
       </div>
     </>

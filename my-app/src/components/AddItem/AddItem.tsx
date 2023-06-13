@@ -89,8 +89,6 @@ function viewPhotoFromString(photo : any) : void {
         <Input
           type="file"
           className="addPhotoInput"
-          value=""
-          placeholder=""
           onChange={(event: any) => {
             if (event.target.files) {
               fileHandler(event.target.files[0]);
@@ -108,7 +106,7 @@ function viewPhotoFromString(photo : any) : void {
   );
 }
 
-export function Input({value, type, className, onChange, placeholder}: {value: string, type: string, className: string, onChange : Function, placeholder: string}){
+export function Input({value, type, className, onChange, placeholder}: {value?: string, type: string, className: string, onChange : Function, placeholder?: string}){
 const [val, setVal] = useState(value);
 return (
      <input type={type} value={val} className={className} placeholder={placeholder} onChange={(event) => {onChange(event); setVal(event.target.value)}} />
