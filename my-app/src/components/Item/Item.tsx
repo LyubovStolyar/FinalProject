@@ -13,6 +13,7 @@ interface Props {
     role: string;
     onEditClick?: Function;
     onDeleteClicked?: Function;
+    toModelView?: Function; 
   };
 
  const role = localStorage.userRole
@@ -39,20 +40,21 @@ if(!photoURL) {
 }
 
 
-    return ( 
+      return ( 
 
         <div className="itemBody">
-            <div className="itemCont">
+            <div className="itemCont"
+            onClick={(e) => {e.stopPropagation(); if(props.toModelView) props.toModelView(props.item)}}>
               <h1 className="photoTitle">{ props.item.title }</h1>
                 <div className="editDeleteHeartCont">  
                     <div className={role === "admin"? "visible":"hidden"}> 
-                      {props.onEditClick && <button onClick={() => {if(props.onEditClick) editItem()}} className="editButton"><FontAwesomeIcon icon={faPenToSquare} /></button>}
-                      {props.onDeleteClicked && <button onClick={() => {if(props.onDeleteClicked) props.onDeleteClicked(props.item.itemID)}} className="deleteButton"><FontAwesomeIcon icon={faTrashCan} /></button>}
+                      {props.onEditClick && <button onClick={(e) => {e.stopPropagation(); if (props.onEditClick) editItem()}} className="editButton"><FontAwesomeIcon icon={faPenToSquare} /></button>}
+                      {props.onDeleteClicked && <button onClick={(e) => {e.stopPropagation(); if(props.onDeleteClicked) props.onDeleteClicked(props.item.itemID)}} className="deleteButton"><FontAwesomeIcon icon={faTrashCan} /></button>}
                     </div>
                     
                     <div className="buttonCont">
-                      <button onClick={() => {props.addToFav(props.item.itemID)}}>
-                      <FontAwesomeIcon icon={faHeart} />
+                      <button className="heartButtonIcon" onClick={(e) => {e.stopPropagation(); props.addToFav(props.item.itemID);}} >
+                      <FontAwesomeIcon icon={faHeart} className="heartButtonItem"/>
                       </button>
                     </div> 
                 </div>

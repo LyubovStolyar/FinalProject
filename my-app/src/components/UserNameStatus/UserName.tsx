@@ -9,7 +9,7 @@ function UserNameStatus() {
     <>
       <div>
        
-             <span>{ user? 'Welcome, ' + user: ''}</span>
+             <div>{ user? 'Welcome, ' + user : " " }</div>
   
       </div>
     </>

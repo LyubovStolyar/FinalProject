@@ -30,7 +30,7 @@ module.exports = {
 
     if (error) {
       console.log(error.details[0].message);
-      res.status(401).send("Unauthorized");
+      res.status(401).json({error: error.details[0].message});
       return;
     }
 
@@ -59,7 +59,7 @@ module.exports = {
    
     } catch (err) {
       console.log(`Error: ${err}`);
-      res.status(401).send("Unauthorized");
+      res.status(401).json({error: "Invalid e-mail or password"});
       return;
     }
   },

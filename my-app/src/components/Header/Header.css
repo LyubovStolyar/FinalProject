@@ -1,17 +1,15 @@
 .headerWrapper{
 width: 100%;
 height: 6%;
-color: #bfc6ff;
 
 }
 
 .link {
-
-margin-left: 7px;
-padding: 1%;
-text-decoration: none;
-color: darkblue;
-
+    margin: 7px;
+    padding: 1%;
+    text-decoration: none;
+    color: darkblue;
+margin: 10px;
 }
 .link:hover{
     color: rgb(255, 255, 255);
@@ -28,5 +26,12 @@ color: darkblue;
 
 .visible{
     visibility:visible;
-    /* background-color: #aaaaaa; */
+    padding: 1%;
+}
+.iconHeader{
+    font-size: 2rem;
+    color:rgb(135, 88, 179);
+    margin: auto 0 10px 15px;
+    text-align: center;
+
 }

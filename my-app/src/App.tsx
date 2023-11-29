@@ -19,23 +19,29 @@ let itemToEdit : ItemType = new ItemType();
 
   return (
     <>
+    <div> 
       <div className="appGeneral">
-        <Header/>
-        <UserName/>
-        <Link to="/login" className="link">Login</Link>
-        <Link to="/signup" className="link">Sign up</Link>
-        <LogOut />
-        
-      </div>
-      <img src={photo} alt="calm view header"  className="mainPhoto" />
+      
 
+      <Header/>
+      <UserName/>
+      <Link to="/login" className="link">Login</Link>
+      <Link to="/signup" className="link">Sign up</Link>
+      <LogOut />
+      
+    </div>
+    </div>
+    <img src={photo} alt="calm view header"  className="mainPhoto" 
+    />
+     
+      
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/homepage" element={<Homepage onEditClick={(item : ItemType) => itemToEdit = item}/>} />
         <Route path="/addItem" element={<AddItem getItem = {() => itemToEdit} removeItem={() => itemToEdit = new ItemType() }/>} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Homepage onEditClick={(item : ItemType) => itemToEdit = item}/>} />
            <Route
           path="/" element={
             <PrivateRouter>

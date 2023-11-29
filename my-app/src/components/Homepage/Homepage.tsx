@@ -6,6 +6,7 @@ import "./Homepage.css";
 import Title from "../Title/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import ModalItem from "../ModalItem/ModalItem";
 
 
 export class ItemType {
@@ -19,6 +20,7 @@ interface Props {}
 
 interface State {
   itemsToShow: Array<ItemType>;
+  itemToModalShow: ItemType | null,
 }
 
 interface HomepageProps{
@@ -33,6 +35,7 @@ class Homepage extends React.Component<HomepageProps, State> {
     super(props);
     this.state = {
       itemsToShow: [],
+      itemToModalShow: null
     };
   }
 
@@ -110,12 +113,22 @@ class Homepage extends React.Component<HomepageProps, State> {
             </div>
         </div>
 
+        {
+        this.state.itemToModalShow && 
+        <ModalItem 
+          itemToView={this.state.itemToModalShow} 
+          onClose={()=> this.setState(() => ({itemToModalShow: null})) } />
+      }
+
         <div className="itemsContHomepage">
             {this.state.itemsToShow && this.state.itemsToShow.map((e) => (
                 <Item item={e} key={e.itemID} role={''} 
                 addToFav={this.addtoFavorites} 
                 onEditClick={(item: ItemType) => this.props.onEditClick(item)} 
-                onDeleteClicked={this.deleteItem} />
+                onDeleteClicked={this.deleteItem} 
+                toModelView={(item:ItemType) => this.setState(() => ({itemToModalShow: item}))}
+                />
+              
             ))}
         </div>
           <Footer />

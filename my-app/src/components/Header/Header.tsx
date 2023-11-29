@@ -1,5 +1,5 @@
 import { BiStore } from "react-icons/bi";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./Header.css";
 
@@ -11,17 +11,19 @@ function Header() {
       
       <div className="headerWrapper">
         <div className="linkContainer">
-          <i className="icon"><BiStore/></i>
 
-          <Link to="/homepage" className="link">Home</Link>
+          <i className="iconHeader"><BiStore/></i>
+
+          <NavLink to="/" className="link">Home</NavLink>
           <NavLink to="/about" className="link">About</NavLink>
           <NavLink to="/favorites" className="link">Favorites</NavLink>
+
           <div className={role === "admin"? "visible":"hidden"}> 
-          <NavLink to="/addItem" className="link">Add Item</NavLink>
+            <NavLink to="/addItem" className="link">Add Item</NavLink>
           </div>
 
-</div>
         </div>
+      </div>
 
     
     </>

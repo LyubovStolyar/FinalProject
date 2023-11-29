@@ -1,0 +1,65 @@
+.mainContModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #575757bb;
+    z-index: 1000;
+
+}
+.modalContTitleDesc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.containerModal{
+    width: 40%;
+    height: 40%;
+    background-color: #825151;
+    margin: 0 auto;
+    margin-top: 10%;
+    display: flex;
+    box-shadow: 0 5px 15px 1px  #c3c3c38c;
+
+}
+.modalTitle{
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-right: 15%;
+
+}
+.modalPhotoCont{
+    width: auto;
+    height: 80%;
+    margin: 4%; 
+/* background-color: #dbdbdb52; */
+
+}
+.photoModalView{
+    width: 95%;
+    height: 95%;
+    object-fit:contain;
+    margin: 5px;
+    text-align: center;
+    color: #ffffff;
+    padding: 5px;
+    /* border: 1px solid #ffffff; */
+
+}
+.modalCloseIcon{
+    position: fixed;
+    margin-left: 1px;
+    padding: 10px;
+    top: 10vw;
+    right: 30%;
+    font-size: 1.6rem;
+    color:#ffffff;
+    cursor: pointer;
+}
+.discriptionModal{
+color:bisque;
+font-size: 1.3rem;
+}

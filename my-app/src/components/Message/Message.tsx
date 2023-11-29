@@ -1,14 +1,14 @@
-import React from "react";
+import "./Message.css";
 
 interface Props {
-    children?: React.ReactNode;
+    message?: string;
 }
 
 function Message(props: Props) {
     return ( 
 
-     <div>
-        <p>{props.children}</p>
+     <div className="messageBody">
+        {props.message && <p>{props.message}</p>}
      </div>
 
      );

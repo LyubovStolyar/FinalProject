@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css";
+import Title from "../../Title/Title";
+import Message from "../../Message/Message";
 
 function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     function submit() {
@@ -24,17 +28,25 @@ function SignUp() {
             body: JSON.stringify(data)
         })
             .then(res => {
-                // console.log('registered');
+                console.log('registered');
+                alert("You are sign in!")
                 navigate('/login');
             })
+            .catch(err => err.json())
+            .then(err => setMessage(err.error));
+            console.log(message)
     }
 
     return (
         <>
-            <h2>Sign Up</h2>
+        <div className="signUpBody">
+           <Title>
+                <h1>Sign Up</h1>
+           </Title> 
 
-            <div>
+            <div >
                 <input
+                    className="signUpInput"
                     type="text"
                     placeholder="Name"
                     value={name}
@@ -43,6 +55,7 @@ function SignUp() {
             </div>
             <div>
                 <input
+                    className="signUpInput"
                     type="text"
                     placeholder="Email"
                     value={email}
@@ -51,6 +64,7 @@ function SignUp() {
             </div>
             <div>
                 <input
+                    className="signUpInput"
                     type="text"
                     placeholder="Phone"
                     value={phone}
@@ -59,6 +73,7 @@ function SignUp() {
             </div>
             <div>
                 <input
+                    className="signUpInput"
                     type="password"
                     placeholder="Password"
                     value={password}
@@ -66,11 +81,17 @@ function SignUp() {
                 />
             </div>
 
-            <button
-                onClick={submit}
-                className="">
-                Sign Up
+            <div className="errorMessage">
+                    <Message message={message}/>
+            </div>
+
+            <button 
+                className="signUpButton"
+                onClick={submit}>
+                    Sign Up
             </button>
+            </div>
+            
         </>
     );
 }

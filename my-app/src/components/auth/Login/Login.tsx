@@ -9,11 +9,13 @@ import Title from "../../Title/Title";
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     // const navigate = useNavigate();
 
 
 
     function submit() {
+
         const data = {
             email,
             password,
@@ -25,17 +27,21 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('token', json.token);
-                localStorage.setItem('userName', json.userName);
-                localStorage.setItem("userRole", json.userRole);
-                localStorage.setItem("id", json.id);
-
-         window.open("/homepage", "_self");
-               
             })
+            .then(res => {
+                if(res.status != 200) throw res;
+                return res.json();
+            })
+            .then(json => {
+                
+                    localStorage.setItem('token', json.token);
+                    localStorage.setItem('userName', json.userName);
+                    localStorage.setItem("userRole", json.userRole);
+                    localStorage.setItem("id", json.id);
+                    window.open("/", "_self");        
+            })
+            .catch(err => err.json())
+            .then(err => setMessage(err.error || "Unknown authorization Error!"));
             
     }
 
@@ -66,7 +72,7 @@ function Login() {
        
 
             <div className="errorMessage">
-                    <Message>{}</Message>
+                    <Message message={message}/>
             </div> 
 
             <button

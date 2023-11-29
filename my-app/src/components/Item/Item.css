@@ -27,7 +27,9 @@
     object-fit:contain;
     margin: 5px;
     text-align: center;
-
+}
+.itemCont:hover{
+    cursor:pointer;
 }
 
 .buttonCont{
@@ -59,7 +61,6 @@ cursor: pointer;
 }
 .visible{
     visibility:visible;
-    /* background-color: #ff3f3f; */
     display:flex;
 }
 .editDeleteHeartCont{
@@ -67,6 +68,13 @@ cursor: pointer;
     justify-content: space-between;
     align-content: center;
 }
-.editButton{
- margin: 5%;
+.editButton, .deleteButton, .heartButtonItem, .heartButtonIcon{
+    margin: 5%;
+    font-size: 1.3rem;
+    color:rgb(157, 60, 60);
+    border:none;
+    background-color: #d1d1d100;
+}
+.editButton:hover, .deleteButton:hover, .heartButtonItem:hover{
+color: #ff0000;
 }

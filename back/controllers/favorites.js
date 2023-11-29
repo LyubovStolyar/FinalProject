@@ -46,7 +46,7 @@ module.exports = {
                 catch (err) {
                     console.log(err.message);
                     if(err.message.startsWith("Duplicate entry")) res.status(409).send("Item already in favorites");
-                    else res.status(400).send('error add to favorites');
+                    else res.status(400).send('Error add to favorites');
                 }
             },
             

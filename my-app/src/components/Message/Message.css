@@ -1,0 +1,9 @@
+.messageBody {
+    position: relative;
+    height: 5vmin;
+    width: 100%;
+    color: red;
+    line-height: 2.5vmin;
+    font-size: 3vmin;
+}
+
